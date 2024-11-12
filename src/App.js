@@ -26,7 +26,7 @@ function App() {
       <input type="text" value={name} onChange={(e) =>setname(e.target.value)}></input>
       <span>Last Name:</span>
       <input type="text" value={surname} onChange={(e) =>setsurname(e.target.value)}></input>
-      <button onClick={handleSubmit}>Submit</button>
+      <button type="submit" onClick={handleSubmit}>Submit</button>
       </div>
       {fullName && <p>{fullName}</p>}
     </form>
