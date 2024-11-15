@@ -1,46 +1,40 @@
 import { useState } from 'react';
 
 function App() {
-  const [names, setNames] = useState({ fname: '', lname: '' });
+ 
   const [fullName, setFullName] = useState("");
+   const [firstName, setfirstName] = useState("");
+   const [lastName, setlastName] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!names.fname || !names.lname) {
+    if (!firstName || !lastName) {
       alert("Please fill out this field");
-    } else {
-      setFullName(`Full Name: ${names.fname} ${names.lname}`);
-    }
+    } 
   };
 
-  const inputEvent = (e) => {
-    const { name, value } = e.target;
-    setNames((prevNames) => ({ ...prevNames, [name]: value }));
-  };
+ 
 
   return (
     <form onSubmit={handleSubmit}>
       <h1>Full Name Display</h1>
       <div>
-        <span>First Name:</span>
+        <p>First Name:</p>
         <input
           type="text"
-          name="fname"
-          value={names.fname}
-          onChange={inputEvent}
-          required
+          value={firstname}
+          onchnage={(e)=>setfirstName(e.target.value)}
         />
-        <span>Last Name:</span>
+        <p>Last Name:</p>
         <input
           type="text"
-          name="lname"
-          value={names.lname}
-          onChange={inputEvent}
-          required
+          value={firstname}
+          onchnage={(e)=>setlastName(e.target.value)}
+         
         />
         <button type="submit">Submit</button>
       </div>
-      {fullName && <p>{fullName}</p>}
+      {fullName && <p>Full Name:{firstName}{lastName}</p>}
     </form>
   );
 }
