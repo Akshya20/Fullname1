@@ -1,19 +1,15 @@
 import { useState } from 'react';
 
 function App() {
- 
-  const [fullName, setFullName] = useState("");
-   const [firstName, setfirstName] = useState("");
-   const [lastName, setlastName] = useState("");
+  const [firstName, setFirstName] = useState(""); 
+  const [lastName, setLastName] = useState(""); 
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!firstName || !lastName) {
-      alert("Please fill out this field");
-    } 
+      alert("Please fill out all fields");
+    }
   };
-
- 
 
   return (
     <form onSubmit={handleSubmit}>
@@ -22,21 +18,23 @@ function App() {
         <p>First Name:</p>
         <input
           type="text"
-          value={firstname}
-          onchnage={(e)=>setfirstName(e.target.value)}
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)} 
         />
         <p>Last Name:</p>
         <input
           type="text"
-          value={firstname}
-          onchnage={(e)=>setlastName(e.target.value)}
-         
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)} 
         />
         <button type="submit">Submit</button>
       </div>
-      {fullName && <p>Full Name:{firstName}{lastName}</p>}
+      {firstName && lastName && (
+        <p>Full Name: {firstName} {lastName}</p> // Display full name dynamically
+      )}
     </form>
   );
 }
 
 export default App;
+
