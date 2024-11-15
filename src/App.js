@@ -3,14 +3,16 @@ import { useState } from 'react';
 function App() {
   const [firstName, setFirstName] = useState(""); 
   const [lastName, setLastName] = useState("");
-  const [show, setShow] = useState(false);
+  const [fullName, setFullName] = useState(""); 
+  const [submitted, setSubmitted] = useState(false); 
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!firstName || !lastName) {
       alert("Please fill out all fields");
     } else {
-      setShow(true); 
+      setFullName(`${firstName} ${lastName}`); 
+      setSubmitted(true);
     }
   };
 
@@ -32,12 +34,12 @@ function App() {
         />
         <button type="submit">Submit</button>
       </div>
-      {show && (
-        <p>Full Name: {firstName} {lastName}</p> 
+
+      {submitted && ( 
+        <p>Full Name: {fullName}</p>
       )}
     </form>
   );
 }
 
 export default App;
-
